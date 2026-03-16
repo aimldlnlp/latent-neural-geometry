@@ -1,21 +1,36 @@
-# From Spikes to Manifold
+<h1 align="center">From Spikes to Manifold</h1>
 
-A compact computational neuroscience study on latent geometry recovery from mixed-selectivity neural population activity. The pipeline compares a nonlinear autoencoder against a PCA baseline, quantifies reconstruction and decoding quality, and exports a paper-style visual package with paired MP4/GIF animations.
+<p align="center">
+  A computational neuroscience project on recovering low-dimensional neural geometry from mixed-selectivity population activity.
+</p>
 
-## At A Glance
+<p align="center">
+  <strong>Autoencoder vs PCA</strong> • <strong>Latent state recovery</strong> • <strong>Paper-style figures</strong> • <strong>Runnable end-to-end pipeline</strong>
+</p>
 
-- Focus: latent neural manifold recovery, representation learning, and robustness analysis
-- Models: NumPy autoencoder and PCA baseline
-- Outputs: 6 scientific PNG figures, 2 MP4 videos, 2 GIF previews, saved artifacts, and evaluation summaries
-- Visual style: `DejaVu Serif`, white background, English-only labels, clean figure layouts
+<p align="center">
+  <img src="docs/readme_assets/recovered_latent_manifold.png" alt="Recovered latent manifold" width="92%" />
+</p>
 
-## Research Question
+<p align="center">
+  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="74%" />
+</p>
 
-Can a compact latent representation recover the geometry of a neural population that mixes orientation and contrast selectivity while remaining robust to noise and partial neuron dropout?
+## Snapshot
 
-## Results
+| What stands out | Why it matters |
+| --- | --- |
+| `10x` lower reconstruction error than PCA | The nonlinear latent model captures structure that the linear baseline leaves behind. |
+| `0.973` contrast `R^2` | The recovered state remains highly informative about continuous sensory variables. |
+| `0.999` trustworthiness | The learned manifold preserves local geometry extremely well. |
 
-Metrics below come from the default configuration. Running the pipeline locally writes the full metric dump to `outputs/default_run/metrics/summary_metrics.json`.
+## Why It Is Interesting
+
+- Combines computational neuroscience, representation learning, and quantitative evaluation in one reproducible repo.
+- Compares a nonlinear model against a strong linear baseline instead of presenting a single-model success story.
+- Produces deliverables that read like a mini research artifact: metrics, figures, animations, and saved analysis outputs.
+
+## Result Table
 
 | Metric | Autoencoder | PCA |
 | --- | ---: | ---: |
@@ -24,59 +39,41 @@ Metrics below come from the default configuration. Running the pipeline locally 
 | Orientation MAE (deg) | 2.69 | 1.84 |
 | Contrast `R^2` | 0.9729 | 0.9695 |
 | Trustworthiness | 0.9991 | 0.9971 |
-| Pairwise-distance correlation | 0.9254 | 0.9401 |
 
-## Key Findings
+The core tradeoff is easy to read: the autoencoder is much better at reconstruction, while PCA remains very competitive on orientation recovery and global geometry.
 
-- The autoencoder delivers a clear reconstruction advantage, reducing held-out reconstruction error by roughly an order of magnitude relative to PCA.
-- Both models recover orientation and contrast structure very strongly, which makes the comparison more interesting than a trivial nonlinear win.
-- PCA remains highly competitive on orientation error and global distance preservation, while the autoencoder is stronger on reconstruction quality and trustworthiness.
-- The full figure set tells a coherent story: what the population encodes, how the manifold is organized, where the two models differ, and how decoded state evolves over time.
-
-## Visual Overview
-
-### Main Figures
-
-![Recovered latent manifold](docs/readme_assets/recovered_latent_manifold.png)
-
-![Autoencoder vs PCA manifold comparison](docs/readme_assets/ae_vs_pca_manifold.png)
-
-![Reconstruction residual analysis](docs/readme_assets/reconstruction_residuals.png)
-
-### Animated Views
+## Visual Highlights
 
 <p align="center">
-  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="48%" />
-  <img src="docs/readme_assets/latent_traversal.gif" alt="Latent traversal with decoded population profiles" width="48%" />
+  <img src="docs/readme_assets/ae_vs_pca_manifold.png" alt="Autoencoder versus PCA manifold comparison" width="49%" />
+  <img src="docs/readme_assets/reconstruction_residuals.png" alt="Reconstruction residual analysis" width="49%" />
 </p>
 
-## Study Design
+<p align="center">
+  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="49%" />
+  <img src="docs/readme_assets/latent_traversal.gif" alt="Latent traversal with decoded population profiles" width="49%" />
+</p>
 
-The study is organized as a reproducible analysis pipeline rather than a notebook-only exploration. Population responses are mapped into a low-dimensional latent space, decoded back into sensory variables, stress-tested under neuron dropout, and compared against a linear baseline using the same evaluation suite.
+## What This Project Shows
 
-Core evaluation axes:
+- A neural population can be compressed into a low-dimensional state while retaining orientation and contrast structure.
+- Linear and nonlinear embeddings recover different aspects of the same neural geometry.
+- Visual evidence and metric evidence tell the same story, which makes the project strong as both a research piece and an engineering showcase.
 
-- reconstruction fidelity on held-out responses
-- orientation recovery quality
-- contrast decoding quality
-- local manifold trustworthiness
-- global distance preservation
-- robustness to partial loss of observed neurons
+## Quick Start
 
-## Showcase Assets
+```bash
+cd /home/aimldl/neural_manifold_study
+python3 -m pip install -r requirements.txt
+python3 scripts/run_end_to_end.py --config configs/default.yaml
+```
 
-The lightweight assets committed to the repository live under `docs/readme_assets/`.
+Faster smoke run:
 
-1. [`recovered_latent_manifold.png`](docs/readme_assets/recovered_latent_manifold.png)  
-   Recovered latent geometry of population responses.
-2. [`ae_vs_pca_manifold.png`](docs/readme_assets/ae_vs_pca_manifold.png)  
-   Side-by-side comparison of nonlinear and linear latent spaces.
-3. [`reconstruction_residuals.png`](docs/readme_assets/reconstruction_residuals.png)  
-   Reconstruction quality and residual structure on a held-out sequence.
-4. [`manifold_trajectory.gif`](docs/readme_assets/manifold_trajectory.gif)  
-   Time-resolved evolution of a held-out trajectory through the recovered manifold.
-5. [`latent_traversal.gif`](docs/readme_assets/latent_traversal.gif)  
-   Controlled traversal through latent space with decoded population profiles.
+```bash
+cd /home/aimldl/neural_manifold_study
+python3 scripts/run_end_to_end.py --config configs/smoke.yaml --output outputs/smoke_run
+```
 
 ## Repository Layout
 
@@ -88,30 +85,39 @@ docs/readme_assets/       tracked showcase assets for GitHub preview
 outputs/                  local figures, animations, metrics, and saved artifacts
 ```
 
-## Quick Start
+## Deliverables
 
-Install dependencies:
+- Scientific figures in `PNG`
+- Preview animations in `GIF`
+- Full-resolution animations in `MP4`
+- Saved latent and model artifacts in `NPZ`
+- Metric summaries in `CSV` and `JSON`
 
-```bash
-cd /home/aimldl/neural_manifold_study
-python3 -m pip install -r requirements.txt
-```
+## Selected Assets
 
-Run the main configuration:
+- [`recovered_latent_manifold.png`](docs/readme_assets/recovered_latent_manifold.png)
+- [`ae_vs_pca_manifold.png`](docs/readme_assets/ae_vs_pca_manifold.png)
+- [`reconstruction_residuals.png`](docs/readme_assets/reconstruction_residuals.png)
+- [`manifold_trajectory.gif`](docs/readme_assets/manifold_trajectory.gif)
+- [`latent_traversal.gif`](docs/readme_assets/latent_traversal.gif)
 
-```bash
-cd /home/aimldl/neural_manifold_study
-python3 scripts/run_end_to_end.py --config configs/default.yaml
-```
+<details>
+<summary>More Details</summary>
 
-Run the faster smoke configuration:
+### Study Question
 
-```bash
-cd /home/aimldl/neural_manifold_study
-python3 scripts/run_end_to_end.py --config configs/smoke.yaml --output outputs/smoke_run
-```
+Can a compact latent representation recover the geometry of a neural population that mixes orientation and contrast selectivity while remaining robust to noise and partial neuron dropout?
 
-## Output Package
+### Evaluation
+
+- reconstruction MSE on held-out responses
+- orientation similarity and orientation error in degrees
+- contrast decoding `R^2`
+- manifold trustworthiness
+- pairwise-distance correlation
+- robustness under neuron dropout
+
+### Output Package
 
 Each run writes a deterministic output directory under `outputs/<run_name>/` with:
 
@@ -133,6 +139,4 @@ Each run writes a deterministic output directory under `outputs/<run_name>/` wit
 - `animations/latent_traversal.mp4`
 - `animations/latent_traversal.gif`
 
-## Recommended Reading Order
-
-Start with the results table, then inspect the latent manifold and AE-vs-PCA comparison, and finish with the two animations. That ordering gives the cleanest narrative from representation quality to model tradeoff to dynamical interpretation.
+</details>
