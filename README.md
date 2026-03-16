@@ -15,7 +15,7 @@ Can a compact latent representation recover the geometry of a neural population 
 
 ## Results
 
-Metrics below come from the default run under [`outputs/default_run`](/home/aimldl/neural_manifold_study/outputs/default_run).
+Metrics below come from the default configuration. Running the pipeline locally writes the full metric dump to `outputs/default_run/metrics/summary_metrics.json`.
 
 | Metric | Autoencoder | PCA |
 | --- | ---: | ---: |
@@ -37,17 +37,17 @@ Metrics below come from the default run under [`outputs/default_run`](/home/aiml
 
 ### Main Figures
 
-![Recovered latent manifold](outputs/default_run/figures/figure_03_latent_manifold.png)
+![Recovered latent manifold](docs/readme_assets/recovered_latent_manifold.png)
 
-![Autoencoder vs PCA manifold comparison](outputs/default_run/figures/figure_05_ae_vs_pca_manifold.png)
+![Autoencoder vs PCA manifold comparison](docs/readme_assets/ae_vs_pca_manifold.png)
 
-![Reconstruction residual analysis](outputs/default_run/figures/figure_06_reconstruction_residuals.png)
+![Reconstruction residual analysis](docs/readme_assets/reconstruction_residuals.png)
 
 ### Animated Views
 
 <p align="center">
-  <img src="outputs/default_run/animations/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="48%" />
-  <img src="outputs/default_run/animations/latent_traversal.gif" alt="Latent traversal with decoded population profiles" width="48%" />
+  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="48%" />
+  <img src="docs/readme_assets/latent_traversal.gif" alt="Latent traversal with decoded population profiles" width="48%" />
 </p>
 
 ## Study Design
@@ -63,23 +63,19 @@ Core evaluation axes:
 - global distance preservation
 - robustness to partial loss of observed neurons
 
-## Figure Guide
+## Showcase Assets
 
-1. [`figure_01_tuning_panel.png`](/home/aimldl/neural_manifold_study/outputs/default_run/figures/figure_01_tuning_panel.png)  
-   Mixed-selectivity tuning structure across example neurons.
-2. [`figure_02_population_heatmap.png`](/home/aimldl/neural_manifold_study/outputs/default_run/figures/figure_02_population_heatmap.png)  
-   Held-out population activity over time with orientation and contrast traces.
-3. [`figure_03_latent_manifold.png`](/home/aimldl/neural_manifold_study/outputs/default_run/figures/figure_03_latent_manifold.png)  
+The lightweight assets committed to the repository live under `docs/readme_assets/`.
+
+1. [`recovered_latent_manifold.png`](docs/readme_assets/recovered_latent_manifold.png)  
    Recovered latent geometry of population responses.
-4. [`figure_04_robustness_metrics.png`](/home/aimldl/neural_manifold_study/outputs/default_run/figures/figure_04_robustness_metrics.png)  
-   Training curve, held-out metrics, and neuron-dropout robustness.
-5. [`figure_05_ae_vs_pca_manifold.png`](/home/aimldl/neural_manifold_study/outputs/default_run/figures/figure_05_ae_vs_pca_manifold.png)  
+2. [`ae_vs_pca_manifold.png`](docs/readme_assets/ae_vs_pca_manifold.png)  
    Side-by-side comparison of nonlinear and linear latent spaces.
-6. [`figure_06_reconstruction_residuals.png`](/home/aimldl/neural_manifold_study/outputs/default_run/figures/figure_06_reconstruction_residuals.png)  
+3. [`reconstruction_residuals.png`](docs/readme_assets/reconstruction_residuals.png)  
    Reconstruction quality and residual structure on a held-out sequence.
-7. [`manifold_trajectory.mp4`](/home/aimldl/neural_manifold_study/outputs/default_run/animations/manifold_trajectory.mp4) / [`manifold_trajectory.gif`](/home/aimldl/neural_manifold_study/outputs/default_run/animations/manifold_trajectory.gif)  
+4. [`manifold_trajectory.gif`](docs/readme_assets/manifold_trajectory.gif)  
    Time-resolved evolution of a held-out trajectory through the recovered manifold.
-8. [`latent_traversal.mp4`](/home/aimldl/neural_manifold_study/outputs/default_run/animations/latent_traversal.mp4) / [`latent_traversal.gif`](/home/aimldl/neural_manifold_study/outputs/default_run/animations/latent_traversal.gif)  
+5. [`latent_traversal.gif`](docs/readme_assets/latent_traversal.gif)  
    Controlled traversal through latent space with decoded population profiles.
 
 ## Repository Layout
@@ -88,7 +84,8 @@ Core evaluation axes:
 configs/                  experiment configuration files
 scripts/run_end_to_end.py command-line entrypoint
 neural_manifold/          package with data, models, metrics, and plotting code
-outputs/                  figures, animations, metrics, and saved artifacts
+docs/readme_assets/       tracked showcase assets for GitHub preview
+outputs/                  local figures, animations, metrics, and saved artifacts
 ```
 
 ## Quick Start
@@ -116,7 +113,7 @@ python3 scripts/run_end_to_end.py --config configs/smoke.yaml --output outputs/s
 
 ## Output Package
 
-Each run writes a deterministic output directory with:
+Each run writes a deterministic output directory under `outputs/<run_name>/` with:
 
 - `artifacts/dataset.npz`
 - `artifacts/autoencoder_model.npz`
