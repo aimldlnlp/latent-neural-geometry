@@ -1,36 +1,49 @@
 <h1 align="center">From Spikes to Manifold</h1>
 
 <p align="center">
-  A computational neuroscience project on recovering low-dimensional neural geometry from mixed-selectivity population activity.
+  <strong>Recovering low-dimensional neural geometry from mixed-selectivity population activity</strong>
 </p>
 
 <p align="center">
-  <strong>Autoencoder vs PCA</strong> • <strong>Latent state recovery</strong> • <strong>Paper-style figures</strong> • <strong>Runnable end-to-end pipeline</strong>
+  Autoencoder vs PCA • Latent state recovery • Scientific visualization • End-to-end research pipeline
 </p>
 
 <p align="center">
-  <img src="docs/readme_assets/recovered_latent_manifold.png" alt="Recovered latent manifold" width="92%" />
+  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="82%" />
 </p>
 
 <p align="center">
-  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="74%" />
+  <img src="docs/readme_assets/recovered_latent_manifold.png" alt="Recovered latent manifold" width="82%" />
 </p>
 
-## Snapshot
+<table align="center">
+  <tr>
+    <td align="center" width="33%">
+      <strong>10x lower</strong><br/>
+      reconstruction error than PCA
+    </td>
+    <td align="center" width="33%">
+      <strong>0.973</strong><br/>
+      contrast decoding <code>R^2</code>
+    </td>
+    <td align="center" width="33%">
+      <strong>0.999</strong><br/>
+      manifold trustworthiness
+    </td>
+  </tr>
+</table>
 
-| What stands out | Why it matters |
-| --- | --- |
-| `10x` lower reconstruction error than PCA | The nonlinear latent model captures structure that the linear baseline leaves behind. |
-| `0.973` contrast `R^2` | The recovered state remains highly informative about continuous sensory variables. |
-| `0.999` trustworthiness | The learned manifold preserves local geometry extremely well. |
+## What This Project Is
 
-## Why It Is Interesting
+A compact computational neuroscience showcase on latent manifold recovery from neural population responses. The project compares a NumPy autoencoder against a PCA baseline, quantifies what each model preserves, and packages the results as clean paper-style figures, animations, and reproducible outputs.
 
-- Combines computational neuroscience, representation learning, and quantitative evaluation in one reproducible repo.
-- Compares a nonlinear model against a strong linear baseline instead of presenting a single-model success story.
-- Produces deliverables that read like a mini research artifact: metrics, figures, animations, and saved analysis outputs.
+## Why It Stands Out
 
-## Result Table
+- Combines computational neuroscience, representation learning, and quantitative evaluation in one repo.
+- Uses a strong linear baseline instead of presenting a single-model success story.
+- Produces outputs that are both visually strong and metrically defensible.
+
+## Result Snapshot
 
 | Metric | Autoencoder | PCA |
 | --- | ---: | ---: |
@@ -40,9 +53,9 @@
 | Contrast `R^2` | 0.9729 | 0.9695 |
 | Trustworthiness | 0.9991 | 0.9971 |
 
-The core tradeoff is easy to read: the autoencoder is much better at reconstruction, while PCA remains very competitive on orientation recovery and global geometry.
+The core story is clear: the autoencoder wins decisively on reconstruction while PCA remains highly competitive on orientation recovery and global geometry.
 
-## Visual Highlights
+## Visual Showcase
 
 <p align="center">
   <img src="docs/readme_assets/ae_vs_pca_manifold.png" alt="Autoencoder versus PCA manifold comparison" width="49%" />
@@ -54,11 +67,12 @@ The core tradeoff is easy to read: the autoencoder is much better at reconstruct
   <img src="docs/readme_assets/latent_traversal.gif" alt="Latent traversal with decoded population profiles" width="49%" />
 </p>
 
-## What This Project Shows
+## What The Visuals Show
 
-- A neural population can be compressed into a low-dimensional state while retaining orientation and contrast structure.
-- Linear and nonlinear embeddings recover different aspects of the same neural geometry.
-- Visual evidence and metric evidence tell the same story, which makes the project strong as both a research piece and an engineering showcase.
+- `Recovered latent manifold`: the population collapses into a structured low-dimensional state space.
+- `AE vs PCA comparison`: nonlinear and linear embeddings preserve different aspects of the same geometry.
+- `Residual analysis`: the reconstruction gap is visually obvious, not just numerically obvious.
+- `Trajectory and traversal animations`: the latent state evolves coherently and remains decodable over time.
 
 ## Quick Start
 
@@ -75,7 +89,7 @@ cd /home/aimldl/neural_manifold_study
 python3 scripts/run_end_to_end.py --config configs/smoke.yaml --output outputs/smoke_run
 ```
 
-## Repository Layout
+## Repo Layout
 
 ```text
 configs/                  experiment configuration files
@@ -102,9 +116,9 @@ outputs/                  local figures, animations, metrics, and saved artifact
 - [`latent_traversal.gif`](docs/readme_assets/latent_traversal.gif)
 
 <details>
-<summary>More Details</summary>
+<summary>Research Details</summary>
 
-### Study Question
+### Core Question
 
 Can a compact latent representation recover the geometry of a neural population that mixes orientation and contrast selectivity while remaining robust to noise and partial neuron dropout?
 
