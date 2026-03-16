@@ -1,7 +1,7 @@
 <h1 align="center">From Spikes to Manifold</h1>
 
 <p align="center">
-  Recovering low-dimensional neural geometry from mixed-selectivity population activity
+  Tracing how neural population activity folds into low-dimensional geometry
 </p>
 
 <p align="center">
@@ -9,14 +9,18 @@
 </p>
 
 <p align="center">
+  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="78%" />
+</p>
+
+<p align="center">
   <img src="docs/readme_assets/recovered_latent_manifold.png" alt="Recovered latent manifold" width="84%" />
 </p>
 
-## Overview
+## Opening Frame
 
-A compact computational neuroscience project on latent manifold recovery from neural population responses. The repository compares a NumPy autoencoder against a PCA baseline, evaluates what each model preserves, and packages the results as clean figures, short animations, and reproducible outputs.
+This project follows a simple idea with a strong visual payoff: take mixed-selectivity neural population activity, recover its hidden state space, and make that state space readable. The repository compares a NumPy autoencoder against a PCA baseline, quantifies what each model preserves, and packages the result as a small research artifact with clean figures, short animations, and reproducible outputs.
 
-## Results
+## Signal
 
 | Metric | Autoencoder | PCA |
 | --- | ---: | ---: |
@@ -26,9 +30,9 @@ A compact computational neuroscience project on latent manifold recovery from ne
 | Contrast `R^2` | 0.9729 | 0.9695 |
 | Trustworthiness | 0.9991 | 0.9971 |
 
-The main tradeoff is clean: the autoencoder is much stronger on reconstruction, while PCA remains highly competitive on orientation recovery and global geometry.
+The central contrast is sharp and interpretable: the autoencoder is dramatically better at reconstruction, while PCA remains highly competitive on orientation recovery and global geometry.
 
-## Visuals
+## Frames
 
 <p align="center">
   <img src="docs/readme_assets/ae_vs_pca_manifold.png" alt="Autoencoder versus PCA manifold comparison" width="49%" />
@@ -40,11 +44,11 @@ The main tradeoff is clean: the autoencoder is much stronger on reconstruction, 
   <img src="docs/readme_assets/latent_traversal.gif" alt="Latent traversal with decoded population profiles" width="49%" />
 </p>
 
-## Why It Works
+## Why It Lands
 
-- Combines computational neuroscience, representation learning, and quantitative evaluation in one focused repo.
-- Uses a strong linear baseline instead of relying on a single-model narrative.
-- Supports the visual story with explicit metrics and saved artifacts.
+- It combines computational neuroscience, representation learning, and quantitative evaluation in one focused repo.
+- It uses a strong linear baseline instead of relying on a single-model success story.
+- It supports the visual story with explicit metrics, saved artifacts, and end-to-end reproducibility.
 
 ## Quick Start
 
@@ -61,6 +65,14 @@ cd /home/aimldl/neural_manifold_study
 python3 scripts/run_end_to_end.py --config configs/smoke.yaml --output outputs/smoke_run
 ```
 
+## What You Get
+
+- Scientific figures in `PNG`
+- Preview animations in `GIF`
+- Full-resolution animations in `MP4`
+- Saved latent and model artifacts in `NPZ`
+- Metric summaries in `CSV` and `JSON`
+
 ## Repository Layout
 
 ```text
@@ -70,14 +82,6 @@ neural_manifold/          package with data, models, metrics, and plotting code
 docs/readme_assets/       tracked showcase assets for GitHub preview
 outputs/                  local figures, animations, metrics, and saved artifacts
 ```
-
-## Deliverables
-
-- Scientific figures in `PNG`
-- Preview animations in `GIF`
-- Full-resolution animations in `MP4`
-- Saved latent and model artifacts in `NPZ`
-- Metric summaries in `CSV` and `JSON`
 
 <details>
 <summary>More Details</summary>
