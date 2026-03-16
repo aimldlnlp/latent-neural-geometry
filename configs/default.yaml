@@ -1,0 +1,40 @@
+seed: 42
+
+output:
+  run_name: default_run
+
+data:
+  n_train_sequences: 24
+  n_test_sequences: 8
+  sequence_length: 140
+  n_neurons: 72
+  dt: 0.05
+  noise_std: 0.22
+  spike_scale: 14.0
+  angle_velocity_range: [0.6, 1.6]
+  contrast_base_range: [0.35, 0.7]
+  contrast_amplitude_range: [0.12, 0.3]
+  smoothing_sigma: 1.0
+
+model:
+  hidden_dim: 48
+  latent_dim: 3
+  epochs: 120
+  batch_size: 256
+  learning_rate: 0.003
+  weight_decay: 0.00001
+  input_noise_std: 0.04
+  validation_fraction: 0.15
+  early_stopping_patience: 18
+
+eval:
+  trustworthiness_k: 12
+  trustworthiness_subset: 700
+  dropout_fractions: [0.0, 0.1, 0.2, 0.3, 0.4]
+  ridge_penalty: 0.001
+
+visuals:
+  dpi: 240
+  animation_fps: 16
+  animation_sequence_index: 0
+
