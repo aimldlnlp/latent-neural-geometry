@@ -1,49 +1,22 @@
 <h1 align="center">From Spikes to Manifold</h1>
 
 <p align="center">
-  <strong>Recovering low-dimensional neural geometry from mixed-selectivity population activity</strong>
+  Recovering low-dimensional neural geometry from mixed-selectivity population activity
 </p>
 
 <p align="center">
-  Autoencoder vs PCA • Latent state recovery • Scientific visualization • End-to-end research pipeline
+  Autoencoder vs PCA • Latent state recovery • Scientific visualization • End-to-end pipeline
 </p>
 
 <p align="center">
-  <img src="docs/readme_assets/manifold_trajectory.gif" alt="Trajectory through recovered manifold" width="82%" />
+  <img src="docs/readme_assets/recovered_latent_manifold.png" alt="Recovered latent manifold" width="84%" />
 </p>
 
-<p align="center">
-  <img src="docs/readme_assets/recovered_latent_manifold.png" alt="Recovered latent manifold" width="82%" />
-</p>
+## Overview
 
-<table align="center">
-  <tr>
-    <td align="center" width="33%">
-      <strong>10x lower</strong><br/>
-      reconstruction error than PCA
-    </td>
-    <td align="center" width="33%">
-      <strong>0.973</strong><br/>
-      contrast decoding <code>R^2</code>
-    </td>
-    <td align="center" width="33%">
-      <strong>0.999</strong><br/>
-      manifold trustworthiness
-    </td>
-  </tr>
-</table>
+A compact computational neuroscience project on latent manifold recovery from neural population responses. The repository compares a NumPy autoencoder against a PCA baseline, evaluates what each model preserves, and packages the results as clean figures, short animations, and reproducible outputs.
 
-## What This Project Is
-
-A compact computational neuroscience showcase on latent manifold recovery from neural population responses. The project compares a NumPy autoencoder against a PCA baseline, quantifies what each model preserves, and packages the results as clean paper-style figures, animations, and reproducible outputs.
-
-## Why It Stands Out
-
-- Combines computational neuroscience, representation learning, and quantitative evaluation in one repo.
-- Uses a strong linear baseline instead of presenting a single-model success story.
-- Produces outputs that are both visually strong and metrically defensible.
-
-## Result Snapshot
+## Results
 
 | Metric | Autoencoder | PCA |
 | --- | ---: | ---: |
@@ -53,9 +26,9 @@ A compact computational neuroscience showcase on latent manifold recovery from n
 | Contrast `R^2` | 0.9729 | 0.9695 |
 | Trustworthiness | 0.9991 | 0.9971 |
 
-The core story is clear: the autoencoder wins decisively on reconstruction while PCA remains highly competitive on orientation recovery and global geometry.
+The main tradeoff is clean: the autoencoder is much stronger on reconstruction, while PCA remains highly competitive on orientation recovery and global geometry.
 
-## Visual Showcase
+## Visuals
 
 <p align="center">
   <img src="docs/readme_assets/ae_vs_pca_manifold.png" alt="Autoencoder versus PCA manifold comparison" width="49%" />
@@ -67,12 +40,11 @@ The core story is clear: the autoencoder wins decisively on reconstruction while
   <img src="docs/readme_assets/latent_traversal.gif" alt="Latent traversal with decoded population profiles" width="49%" />
 </p>
 
-## What The Visuals Show
+## Why It Works
 
-- `Recovered latent manifold`: the population collapses into a structured low-dimensional state space.
-- `AE vs PCA comparison`: nonlinear and linear embeddings preserve different aspects of the same geometry.
-- `Residual analysis`: the reconstruction gap is visually obvious, not just numerically obvious.
-- `Trajectory and traversal animations`: the latent state evolves coherently and remains decodable over time.
+- Combines computational neuroscience, representation learning, and quantitative evaluation in one focused repo.
+- Uses a strong linear baseline instead of relying on a single-model narrative.
+- Supports the visual story with explicit metrics and saved artifacts.
 
 ## Quick Start
 
@@ -89,7 +61,7 @@ cd /home/aimldl/neural_manifold_study
 python3 scripts/run_end_to_end.py --config configs/smoke.yaml --output outputs/smoke_run
 ```
 
-## Repo Layout
+## Repository Layout
 
 ```text
 configs/                  experiment configuration files
@@ -107,16 +79,8 @@ outputs/                  local figures, animations, metrics, and saved artifact
 - Saved latent and model artifacts in `NPZ`
 - Metric summaries in `CSV` and `JSON`
 
-## Selected Assets
-
-- [`recovered_latent_manifold.png`](docs/readme_assets/recovered_latent_manifold.png)
-- [`ae_vs_pca_manifold.png`](docs/readme_assets/ae_vs_pca_manifold.png)
-- [`reconstruction_residuals.png`](docs/readme_assets/reconstruction_residuals.png)
-- [`manifold_trajectory.gif`](docs/readme_assets/manifold_trajectory.gif)
-- [`latent_traversal.gif`](docs/readme_assets/latent_traversal.gif)
-
 <details>
-<summary>Research Details</summary>
+<summary>More Details</summary>
 
 ### Core Question
 
@@ -130,6 +94,14 @@ Can a compact latent representation recover the geometry of a neural population 
 - manifold trustworthiness
 - pairwise-distance correlation
 - robustness under neuron dropout
+
+### Selected Assets
+
+- [`recovered_latent_manifold.png`](docs/readme_assets/recovered_latent_manifold.png)
+- [`ae_vs_pca_manifold.png`](docs/readme_assets/ae_vs_pca_manifold.png)
+- [`reconstruction_residuals.png`](docs/readme_assets/reconstruction_residuals.png)
+- [`manifold_trajectory.gif`](docs/readme_assets/manifold_trajectory.gif)
+- [`latent_traversal.gif`](docs/readme_assets/latent_traversal.gif)
 
 ### Output Package
 
